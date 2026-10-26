@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>张丹蕾 · AIGC 广告创意作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* ============ 设计令牌 ============ */
+:root {
+  /* 色彩 */
+  --ground:#F6F8F5; --surface:#FFFFFF; --surface-sunk:#EDF1EC; --surface-dim:#F0F3F0;
+  --mat:#E7ECE7; --mat-2:#F3F6F3;
+  --line:#DCE3DD; --line-strong:#B9C5BB;
+  --ink:#101C16; --ink-mid:#42513F; --ink-soft:#6E7E74;
+  --c1:#A81F28; --c2:#8A6A1E; --c3:#1F6F8B; --c4:#2C6B4F;
+  --on-tone:#FFFFFF;
+  /* 间距 8pt 网格 */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:20px; --s6:24px;
+  --s8:32px; --s10:40px; --s12:48px; --s16:64px;
+  /* 圆角 */
+  --r-sm:4px; --r-md:8px; --r-card:10px; --r-lg:14px; --r-full:999px;
+  /* 阴影 */
+  --sh-1:0 1px 2px rgba(16,28,22,.05), 0 2px 8px -4px rgba(16,28,22,.10);
+  --sh-2:0 2px 4px rgba(16,28,22,.06), 0 10px 24px -10px rgba(16,28,22,.18);
+  /* 动效 */
+  --ease:cubic-bezier(.2,0,0,1);
+  --dur:200ms;
+  --accent:var(--c1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:#0D150F; --surface:#141E18; --surface-sunk:#101A14; --surface-dim:#18231C;
+    --mat:#1B2A21; --mat-2:#22332A;
+    --line:#25342B; --line-strong:#3A4E42;
+    --ink:#EAF1EB; --ink-mid:#A6B5A9; --ink-soft:#7E8F84;
+    --c1:#E5757C; --c2:#D6B463; --c3:#6FB6D1; --c4:#6FC095;
+    --on-tone:#12180F;
+    --sh-1:0 1px 2px rgba(0,0,0,.4), 0 2px 8px -4px rgba(0,0,0,.5);
+    --sh-2:0 2px 4px rgba(0,0,0,.45), 0 10px 24px -10px rgba(0,0,0,.6);
+  }
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+  font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:70rem; margin:0 auto; padding:0 1.5rem 3.5rem; }
+
+/* ============ 一级：报头 H1 ============ */
+.mast { padding:var(--s12) 0 var(--s8); display:flex; flex-direction:column; gap:var(--s5); }
+.eyebrow { display:flex; align-items:center; gap:var(--s3);
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:500;
+  letter-spacing:.2em; color:var(--ink-soft); }
+.eyebrow::after { content:""; flex:1; height:1px; background:var(--line); }
+.h1wrap { display:flex; gap:var(--s5); align-items:flex-start; }
+.h1bar { flex:none; width:4px; align-self:stretch; min-height:3.2rem;
+  background:linear-gradient(180deg,var(--c1),var(--c4)); border-radius:2px; }
+h1 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:800;
+  font-size:clamp(2.3rem,5.6vw,3.6rem); line-height:1.06; letter-spacing:-.028em;
+  margin:0; text-wrap:balance; }
+h1 em { font-style:normal; color:var(--c1); }
+/* 用 div 而不是 p：standfirst 里可能有 ul/li，p 里嵌 ul 会被浏览器拆开 */
+.standfirst { font-size:1.02rem; line-height:1.78; color:var(--ink-mid); max-width:46rem; margin:0; }
+.standfirst ul { margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:var(--s2); }
+.standfirst li { padding-left:.15rem; }
+.standfirst strong { color:var(--ink); font-weight:700; }
+.meta-row { display:flex; flex-wrap:wrap; gap:.3rem 1.4rem;
+  font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.74rem; color:var(--ink-soft); }
+
+/* ============ 数据条 ============ */
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+  gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; }
+.stat { background:var(--surface); padding:var(--s4) var(--s5) var(--s5); display:flex; flex-direction:column; gap:.15rem; }
+.stat-k { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.66rem; letter-spacing:.12em; color:var(--ink-soft); }
+.stat-v { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700; font-size:1.7rem;
+  line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.stat-n { font-size:.74rem; color:var(--ink-soft); line-height:1.45; }
+
+/* ============ 二级：大类 Tab（色块徽章式，更醒目） ============ */
+.tabs1 { display:flex; gap:var(--s3); margin-top:var(--s10); flex-wrap:wrap;
+  padding:var(--s4); border-radius:var(--r-lg); background:var(--surface);
+  border:1px solid var(--line); }
+.tab1 { position:relative; flex:1 1 0; min-width:8.5rem; text-align:left;
+  font-family:"Fraunces","Noto Serif SC",Georgia,serif;
+  font-weight:700; font-size:clamp(1rem,1.6vw,1.22rem); letter-spacing:-.01em;
+  background:var(--surface-dim); color:var(--ink-mid);
+  border:2px solid transparent; border-left-width:4px;
+  border-radius:var(--r-md); cursor:pointer; overflow:hidden;
+  padding:var(--s4) var(--s5) var(--s4) var(--s5);
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+             background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+             color var(--dur) var(--ease); }
+.tab1:hover { transform:translateY(-2px); box-shadow:var(--sh-1); color:var(--ink); background:var(--surface); }
+.tab1.on { background:var(--surface); color:var(--ink); border-left-color:var(--accent);
+  box-shadow:var(--sh-1); }
+.tab1.on::after { content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--accent); }
+.tab1 .t1num { display:block; font-family:"IBM Plex Mono",monospace; font-size:.68rem;
+  letter-spacing:.12em; color:var(--accent); margin-bottom:.15rem; opacity:.9; }
+.tab1 .t1n { position:absolute; right:var(--s3); top:var(--s3);
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  color:#fff; background:var(--accent); padding:.1rem .42rem; border-radius:var(--r-full); }
+.tab1:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* ============ 大类标题区 ============ */
+.sec { --accent:var(--c1); padding-top:var(--s8); }
+.sec[data-tone="a"] { --accent:var(--c1); }
+.sec[data-tone="b"] { --accent:var(--c2); }
+.sec[data-tone="c"] { --accent:var(--c3); }
+.sec[data-tone="d"] { --accent:var(--c4); }
+.sechead { background:var(--surface); border:1px solid var(--line);
+  border-left:3px solid var(--accent); border-radius:var(--r-md); padding:var(--s6) var(--s6) var(--s5); }
+.sectop { display:flex; align-items:baseline; gap:var(--s3); flex-wrap:wrap; }
+.secnum { font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600;
+  letter-spacing:.2em; color:var(--accent); }
+.sectag { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.66rem;
+  letter-spacing:.1em; color:var(--accent); border:1px solid currentColor;
+  padding:.1rem .45rem; border-radius:var(--r-full); }
+h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
+  font-size:clamp(1.5rem,3.2vw,2.1rem); line-height:1.18; letter-spacing:-.018em;
+  margin:var(--s2) 0 0; }
+.secrule { width:3.5rem; height:3px; background:var(--accent); border-radius:2px; margin-top:var(--s3); }
+.secdesc { font-size:.93rem; line-height:1.8; color:var(--ink-mid); max-width:50rem; margin:var(--s4) 0 0; }
+
+/* ============ 三级：小类 Tab ============ */
+.tabs2 { display:flex; gap:var(--s2); flex-wrap:wrap; margin-top:var(--s6);
+  padding-bottom:var(--s3); border-bottom:1px solid var(--line); }
+.tab2 { font-family:"Noto Sans SC",sans-serif; font-size:.82rem; font-weight:500;
+  background:var(--surface); color:var(--ink-mid); border:1px solid var(--line);
+  padding:.32rem .8rem; border-radius:var(--r-full); cursor:pointer;
+  transition:all var(--dur) var(--ease); line-height:1.5; }
+.tab2:hover { border-color:var(--accent); color:var(--accent); }
+.tab2.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); font-weight:700; }
+.tab2 .t2n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.7; margin-left:.3rem; }
+.tab2:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* ============ 视图 A：大类概览（小类卡片墙） ============ */
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));
+  gap:var(--s5); margin-top:var(--s6); }
+.gcard { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);
+  overflow:hidden; cursor:pointer; text-align:left; padding:0; font:inherit; color:inherit;
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.gcard:hover { transform:translateY(-4px); box-shadow:var(--sh-2); border-color:var(--accent); }
+.gcard:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.gcover { position:relative; display:block; aspect-ratio:4/3; background:var(--surface-sunk); overflow:hidden; }
+.gcover img { width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform 400ms var(--ease); }
+.gcard:hover .gcover img { transform:scale(1.04); }
+.gmask { position:absolute; inset:0; background:linear-gradient(180deg,rgba(16,28,22,0) 40%,rgba(16,28,22,.72)); }
+.gcount { position:absolute; left:var(--s3); bottom:var(--s3);
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.06em;
+  color:#fff; background:rgba(16,28,22,.6); backdrop-filter:blur(4px);
+  padding:.15rem .5rem; border-radius:var(--r-full); }
+.gbody { padding:var(--s4); display:flex; flex-direction:column; gap:var(--s1); }
+.gname { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:600;
+  font-size:1.05rem; letter-spacing:-.006em; line-height:1.35; }
+.gmeta { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.68rem; color:var(--ink-soft); }
+
+/* ============ 视图 B：小类素材网格 ============ */
+.ghead { margin-top:var(--s6); display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap; }
+.gbar { width:1.1rem; height:2px; background:var(--accent); border-radius:2px; flex:none; }
+.gnum { font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600;
+  letter-spacing:.16em; color:var(--accent); }
+h3 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:600;
+  font-size:1.16rem; letter-spacing:-.006em; line-height:1.35; margin:0; }
+.gstat { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.72rem; color:var(--ink-soft); }
+.gdesc { font-size:.88rem; line-height:1.75; color:var(--ink-mid); max-width:48rem; margin:var(--s3) 0 0; }
+
+/* 瀑布流：由 JS 按「最短列优先」分配，素材按自身比例显示，
+   不裁切、无画框留白；列数只跟容器宽度有关，与素材条数无关，
+   所以 4 条和 28 条的排版表现完全一致 */
+.grid { display:flex; align-items:flex-start; gap:var(--s4); margin-top:var(--s5); }
+.grid .col { flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:var(--s4); }
+.grid .vcard { display:block; width:100%; }
+.vcard { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);
+  overflow:hidden; cursor:pointer; position:relative; padding:0; font:inherit; color:inherit; text-align:left;
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.vcard:hover { transform:translateY(-3px); box-shadow:var(--sh-2); border-color:var(--accent); }
+.vcard:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+/* 卡片画框：随素材自身比例，绝不裁切、不留白边 */
+.poster { position:relative; display:block; line-height:0; background:var(--surface); overflow:hidden; }
+.poster img { width:100%; height:auto; display:block;
+  transition:transform 400ms var(--ease); }
+.vcard:hover .poster img { transform:scale(1.03); }
+.vcard .chip { position:absolute; left:var(--s2); top:var(--s2); z-index:2;
+  font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.62rem; letter-spacing:.04em;
+  color:#fff; background:rgba(16,28,22,.66); backdrop-filter:blur(4px);
+  padding:.1rem .42rem; border-radius:var(--r-full); }
+.play { position:absolute; inset:0; margin:auto; width:2.6rem; height:2.6rem;
+  background:rgba(16,28,22,.5); backdrop-filter:blur(2px); border-radius:50%; }
+.play::before { content:""; position:absolute; top:50%; left:55%; transform:translate(-50%,-50%);
+  border-style:solid; border-width:.42rem 0 .42rem .7rem;
+  border-color:transparent transparent transparent #fff; }
+.dur { position:absolute; right:var(--s2); bottom:var(--s2);
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:#fff;
+  background:rgba(16,28,22,.7); padding:.05rem .35rem; border-radius:var(--r-sm); line-height:1.5; }
+.vcard[data-type="image"] .play, .vcard[data-type="image"] .dur { display:none; }
+.vmeta { padding:var(--s3); display:flex; flex-direction:column; gap:.1rem; }
+.vtitle { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:600;
+  font-size:.92rem; line-height:1.35; }
+.vsub { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.66rem; color:var(--ink-soft); }
+.vorig { font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--ink-soft);
+  opacity:.7; word-break:break-all; line-height:1.4; }
+
+.empty { margin-top:var(--s6); padding:var(--s10) var(--s6); text-align:center;
+  border:1px dashed var(--line-strong); border-radius:var(--r-md); color:var(--ink-soft); font-size:.88rem; }
+
+/* ============ 灯箱 ============ */
+.lb { position:fixed; inset:0; z-index:100; display:none; background:rgba(12,20,15,.96); }
+.lb.on { display:flex; align-items:center; justify-content:center; padding:1.5rem; }
+.lb-box { max-width:min(94vw,58rem); display:flex; flex-direction:column; gap:var(--s3); }
+.lb-stage { position:relative; line-height:0; background:#000; border-radius:var(--r-md); overflow:hidden;
+  display:flex; align-items:center; justify-content:center; min-height:3rem; min-width:3rem; }
+/* 视频整段下载时的加载提示（托管服务不支持 Range，必须整段取回才能播） */
+.lb-stage.loading::after { content:""; position:absolute; width:2rem; height:2rem;
+  border:2px solid rgba(234,241,235,.25); border-top-color:#EAF1EB; border-radius:50%;
+  animation:lbspin .8s linear infinite; }
+@keyframes lbspin { to { transform:rotate(360deg); } }
+.lb-stage img, .lb-stage video { max-width:100%; max-height:82vh; display:block; object-fit:contain; }
+.lb-bar { display:flex; align-items:baseline; gap:var(--s4); flex-wrap:wrap; }
+.lb-title { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-size:1.05rem; color:#EAF1EB; }
+.lb-sub, .lb-orig { font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:#8E9F94; }
+.lb-orig { word-break:break-all; opacity:.8; }
+.lb-x { position:absolute; top:1rem; right:1.2rem; background:none;
+  border:1px solid rgba(234,241,235,.32); color:#EAF1EB; font-size:1.15rem; line-height:1;
+  padding:.3rem .6rem; cursor:pointer; border-radius:var(--r-sm); font-family:"IBM Plex Mono",monospace; }
+.lb-x:hover { border-color:#EAF1EB; }
+.lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(16,28,22,.6);
+  border:1px solid rgba(234,241,235,.26); color:#EAF1EB; width:2.6rem; height:3.6rem;
+  cursor:pointer; font-size:1.3rem; border-radius:var(--r-md); }
+.lb-nav:hover { border-color:#EAF1EB; }
+.lb-prev { left:.6rem; } .lb-next { right:.6rem; }
+@media (max-width:38rem) { .lb-nav { display:none; } }
+
+footer { margin-top:var(--s12); padding-top:var(--s5); border-top:2px solid var(--ink);
+  font-size:.8rem; color:var(--ink-soft); }
+footer p { max-width:none; line-height:1.75; }
+
+/* ============ 编辑 ============ */
+.editbar { position:fixed; right:1rem; bottom:1rem; z-index:60; display:flex; gap:var(--s2); flex-wrap:wrap; }
+.editbar button, .gbtn { font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.72rem;
+  background:var(--surface); color:var(--ink-mid); border:1px solid var(--line-strong);
+  padding:.38rem .7rem; border-radius:var(--r-sm); cursor:pointer; box-shadow:var(--sh-1); }
+.editbar button:hover, .gbtn:hover { color:var(--c1); border-color:var(--c1); }
+.editbar button.on { background:var(--c1); color:#fff; border-color:var(--c1); }
+.gbtn { box-shadow:none; padding:.22rem .55rem; font-size:.68rem; }
+.gbtn.del:hover { color:var(--c1); border-color:var(--c1); }
+.edithint { position:fixed; left:1rem; bottom:1rem; z-index:60; font-family:"IBM Plex Mono","Noto Sans SC",monospace;
+  font-size:.72rem; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line);
+  padding:.45rem .7rem; border-radius:var(--r-sm); display:none; max-width:min(70vw,26rem); line-height:1.6; }
+body.editmode .edithint { display:block; }
+body.editmode [data-edit] { outline:1px dashed var(--c1); outline-offset:3px; cursor:text; }
+body.editmode [data-edit]:hover { outline-style:solid; }
+.hidex { position:absolute; top:var(--s2); left:var(--s2); width:1.4rem; height:1.4rem; line-height:1;
+  background:var(--c1); color:#fff; border:none; cursor:pointer; font-size:.85rem;
+  display:none; z-index:2; border-radius:var(--r-sm);
+  align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; }
+body.editmode .hidex { display:flex; }
+.addrow { display:none; margin-top:var(--s5); }
+body.editmode .addrow { display:block; }
+
+.toast { position:fixed; left:50%; bottom:4.5rem; transform:translateX(-50%); z-index:120;
+  background:var(--ink); color:var(--ground); font-size:.85rem; padding:.6rem 1rem;
+  border-radius:var(--r-md); display:flex; align-items:center; gap:var(--s4); box-shadow:var(--sh-2); }
+.toast button { background:none; border:1px solid currentColor; color:inherit;
+  font-family:"IBM Plex Mono",monospace; font-size:.75rem; padding:.15rem .5rem;
+  border-radius:var(--r-sm); cursor:pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; animation:none !important; }
+  html { scroll-behavior:auto; }
+}
+@media (max-width:34rem) {
+  .mast { padding:var(--s8) 0 var(--s6); }
+  .h1wrap { gap:var(--s3); }
+  .tab1 { padding:var(--s2) var(--s3); }
+  .sechead { padding:var(--s4); }
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="素材查看">
+  <button class="lb-x" id="lbX" aria-label="关闭">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="上一个">&#8249;</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="下一个">&#8250;</button>
+  <div class="lb-box">
+    <div class="lb-stage" id="lbStage"></div>
+    <div class="lb-bar"><span class="lb-title" id="lbTitle"></span><span class="lb-sub" id="lbSub"></span><span class="lb-orig" id="lbOrig"></span></div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script>try{if(typeof CONTENT!=='undefined'){window.CONTENT=CONTENT;}}catch(e){}</script>
+<script>
+(function () {
+  var LS = 'pf_content_v1', SEL_KEY = 'pf_sel_v1', SESS = 'pf_unlock_v1';
+  function boot(C) {
+  try {
+    var sv = localStorage.getItem(LS);
+    if (sv) { var s = JSON.parse(sv); if (s && s.rev === C.rev) C = s; else localStorage.removeItem(LS); }
+  } catch (e) {}
+  var sel = { sec: C.sections[0].slug, grp: 'ALL' };
+  try {
+    var ss = localStorage.getItem(SEL_KEY);
+    if (ss) { var p = JSON.parse(ss); if (p && p.sec) sel = p; }
+  } catch (e) {}
+  var cards = [];
+
+  function save() { try { localStorage.setItem(LS, JSON.stringify(C)); } catch (e) {} }
+  function saveSel() { try { localStorage.setItem(SEL_KEY, JSON.stringify(sel)); } catch (e) {} }
+  function setPath(p, v) {
+    var ks = p.split('.'), o = C;
+    for (var i = 0; i < ks.length - 1; i++) { o = o[ks[i]]; }
+    o[ks[ks.length - 1]] = v; save();
+  }
+  function ed(p) { return ' data-edit="' + p + '"'; }
+  function mmss(s) { s = Math.round(s || 0); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function vis(g) { return (g.items || []).filter(function (i) { return !i.hidden; }); }
+  function gmeta(g) {
+    var n = vis(g).length;
+    if (g.kind !== 'video') return n + ' 张';
+    var d = vis(g).filter(function (i) { return i.dur; }).map(function (i) { return i.dur; });
+    var r = {}; vis(g).forEach(function (i) { if (i.ratio) r[i.ratio] = 1; });
+    var rng = d.length ? (Math.min.apply(null, d) === Math.max.apply(null, d)
+      ? mmss(d[0]) : mmss(Math.min.apply(null, d)) + '–' + mmss(Math.max.apply(null, d))) : '';
+    return n + ' 条 · ' + rng + ' · ' + Object.keys(r).sort().join('/');
+  }
+  function cover(g) {
+    var it = vis(g)[0];
+    return it ? 'assets/' + (g.kind === 'video' ? 'poster' : 'thumb') + '/' + it.key + '.jpg' : '';
+  }
+
+  function srcOf(kind, key) {
+    return 'assets/' + (kind === 'video' ? 'poster' : 'thumb') + '/' + key + '.jpg';
+  }
+  function cardHtml(g, gi, si, it, chip) {
+    var idx = (g.items || []).indexOf(it), p = 'sections.' + si + '.groups.' + gi + '.items.' + idx;
+    return '<button class="vcard" data-type="' + g.kind + '" data-i="' + cards.length +
+      '" data-ar="' + (it.ratio || '1:1') + '">' +
+      '<span class="hidex" role="button" tabindex="-1" data-hide="' + p + '" title="隐藏">&times;</span>' +
+      '<span class="poster">' +
+      (chip ? '<span class="chip">' + chip + '</span>' : '') +
+      '<img loading="lazy" src="' + srcOf(g.kind, it.key) + '" alt="">' +
+      (g.kind === 'video' ? '<span class="play"></span><span class="dur">' + mmss(it.dur) + '</span>' : '') +
+      '</span>' +
+      '<span class="vmeta"><span class="vtitle"' + ed(p + '.label') + '>' + it.label + '</span>' +
+      (it.sub ? '<span class="vsub">' + it.sub + '</span>' : '') +
+      '<span class="vorig">' + it.src + '</span></span></button>';
+  }
+
+  /* ---- 视图 A：大类全部素材（默认，一屏看全） ---- */
+  function allView(si, S) {
+    var h = [], box = S.box || '1:1';
+    var nAll = S.groups.reduce(function (a, g) { return a + vis(g).length; }, 0);
+    h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no + '.ALL</span>' +
+      '<h3>全部素材</h3><span class="gstat">' + nAll + ' 项 · ' + S.groups.length + ' 个小类</span></div>');
+    h.push('<p class="gdesc">点上方小类标签可只看某一类。</p>');
+    if (!nAll) {
+      h.push('<div class="empty">这个大类还没有素材。</div>');
+      return h.join('');
+    }
+    h.push('<div class="grid">');
+    S.groups.forEach(function (g, gi) {
+      vis(g).forEach(function (it) {
+        h.push(cardHtml(g, gi, si, it, g.title));
+        cards.push({ type: g.kind, key: it.key, label: it.label, sub: it.sub || '点击查看大图', src: it.src });
+      });
+    });
+    h.push('</div>');
+    return h.join('');
+  }
+
+  /* ---- 视图 B：单个小类网格 ---- */
+  function gridView(si, S, gi) {
+    var g = S.groups[gi], items = vis(g), h = [];
+    h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no + '.' + (gi + 1) + '</span>' +
+      '<h3' + ed('sections.' + si + '.groups.' + gi + '.title') + '>' + g.title + '</h3>' +
+      '<span class="gstat">' + gmeta(g) + '</span>' +
+      '<button class="gbtn del" data-del="' + si + '.' + gi + '">删除小类</button></div>');
+    if (g.desc) {
+      h.push('<p class="gdesc"' + ed('sections.' + si + '.groups.' + gi + '.desc') + '>' + g.desc + '</p>');
+    }
+    if (!items.length) {
+      h.push('<div class="empty">这个小类还没有素材。把文件放进「新素材/' + S.title + '/' + g.title + '/」后运行 sync.py。</div>');
+      return h.join('');
+    }
+    h.push('<div class="grid">');
+    items.forEach(function (it) {
+      h.push(cardHtml(g, gi, si, it, ''));
+      cards.push({ type: g.kind, key: it.key, label: it.label, sub: it.sub || '点击查看大图', src: it.src });
+    });
+    h.push('</div>');
+    return h.join('');
+  }
+
+  function render() {
+    cards.length = 0;
+    var m = C.meta, h = [], si = 0;
+    for (var i = 0; i < C.sections.length; i++) if (C.sections[i].slug === sel.sec) si = i;
+    var S = C.sections[si];
+    var gi = -1;
+    for (var j = 0; j < S.groups.length; j++) if (S.groups[j].slug === sel.grp) gi = j;
+
+    h.push('<header class="mast">');
+    h.push('<span class="eyebrow"' + ed('meta.eyebrow') + '>' + m.eyebrow + '</span>');
+    h.push('<div class="h1wrap"><span class="h1bar"></span><h1><span' + ed('meta.h1a') + '>' + m.h1a +
+      '</span><br><span' + ed('meta.h1b') + '>' + m.h1b + '</span><em' + ed('meta.h1em') + '>' + m.h1em + '</em></h1></div>');
+    h.push('<div class="standfirst"' + ed('meta.standfirst') + '>' + m.standfirst + '</div>');
+    h.push('<div class="meta-row">' + (m.metaRow || []).map(function (s, i) {
+      return '<span' + ed('meta.metaRow.' + i) + '>' + s + '</span>'; }).join('') + '</div>');
+    h.push('</header>');
+
+    h.push('<div class="stats">');
+    (C.stats || []).forEach(function (s, i) {
+      h.push('<div class="stat"><span class="stat-k"' + ed('stats.' + i + '.k') + '>' + s.k + '</span>' +
+        '<span class="stat-v"' + ed('stats.' + i + '.v') + '>' + s.v + '</span>' +
+        '<span class="stat-n"' + ed('stats.' + i + '.n') + '>' + s.n + '</span></div>');
+    });
+    h.push('</div>');
+
+    /* 一级 Tab：大类 */
+    h.push('<div class="tabs1" role="tablist" aria-label="作品大类">');
+    C.sections.forEach(function (X) {
+      var tot = X.groups.reduce(function (a, g) { return a + vis(g).length; }, 0);
+      var on = X.slug === S.slug;
+      h.push('<button class="tab1' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
+        '" data-sec="' + X.slug + '" style="--accent:var(--c' + (['a','b','c','d'].indexOf(X.tone) + 1) + ')">' +
+        '<span class="t1num">' + X.no + '</span>' + X.title + '<span class="t1n">' + tot + '</span></button>');
+    });
+    h.push('</div>');
+
+    /* 大类标题区 */
+    h.push('<section class="sec" data-tone="' + (S.tone || 'a') + '">');
+    h.push('<div class="sechead"><div class="sectop">' +
+      '<span class="secnum">' + S.no + '</span>' +
+      '<span class="sectag"' + ed('sections.' + si + '.tag') + '>' + (S.tag || '') + '</span></div>' +
+      '<h2' + ed('sections.' + si + '.title') + '>' + S.title + '</h2>' +
+      '<div class="secrule"></div>' +
+      '<p class="secdesc"' + ed('sections.' + si + '.desc') + '>' + S.desc + '</p></div>');
+
+    /* 二级 Tab：小类 */
+    var nAll = S.groups.reduce(function (a, g) { return a + vis(g).length; }, 0);
+    h.push('<div class="tabs2" role="tablist" aria-label="细分小类">');
+    h.push('<button class="tab2' + (gi < 0 ? ' on' : '') + '" role="tab" aria-selected="' + (gi < 0) +
+      '" data-grp="ALL">全部概览<span class="t2n">' + nAll + '</span></button>');
+    S.groups.forEach(function (g, k) {
+      var on = k === gi;
+      h.push('<button class="tab2' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
+        '" data-grp="' + g.slug + '">' + g.title + '<span class="t2n">' + vis(g).length + '</span></button>');
+    });
+    h.push('</div>');
+
+    h.push(gi < 0 ? allView(si, S) : gridView(si, S, gi));
+
+    h.push('<div class="addrow"><button class="gbtn" data-add="' + si + '">+ 新增小类</button></div>');
+    h.push('</section>');
+
+    h.push('<footer><p><strong>关于本页。</strong><span' + ed('footer') + '>' + C.footer + '</span></p></footer>');
+    document.getElementById('app').innerHTML = h.join('');
+    layout();
+    bind();
+  }
+
+  /* 瀑布流排版：列数只由容器宽度决定，素材按「最短列优先」落位。
+     与素材条数无关 —— 4 条和 28 条的表现完全一致。 */
+  function colsFor(w) {
+    return w < 480 ? 1 : w < 760 ? 2 : w < 1040 ? 3 : 4;
+  }
+  function layout() {
+    Array.prototype.forEach.call(document.querySelectorAll('.grid'), function (grid) {
+      /* 收「所有直接子元素」，不是只收 .vcard —— 万一某天又有元素
+         被浏览器解析到卡片外面，也不会被 innerHTML='' 清掉 */
+      var vs = Array.prototype.slice.call(grid.children);
+      if (!vs.length) return;
+      /* 列数只跟容器宽度有关，跟素材条数无关 —— 1 条素材也按 4 列宽显示，
+         不会撑满整行变成巨大卡片 */
+      var n = colsFor(grid.clientWidth || 900);
+      grid.innerHTML = '';
+      var cols = [], hs = [], i;
+      for (i = 0; i < n; i++) {
+        var d = document.createElement('div');
+        d.className = 'col';
+        grid.appendChild(d);
+        cols.push(d); hs.push(0);
+      }
+      vs.forEach(function (v) {
+        var p = (v.getAttribute('data-ar') || '1:1').split(':');
+        var h = (parseFloat(p[1]) || 1) / (parseFloat(p[0]) || 1);
+        var m = 0;
+        for (var k = 1; k < n; k++) if (hs[k] < hs[m] - 0.001) m = k;
+        cols[m].appendChild(v);
+        hs[m] += h + 0.24;   /* 0.24 ≈ 卡片文字区高度占比 */
+      });
+    });
+  }
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt); rt = setTimeout(layout, 120);
+  });
+
+  var lb = document.getElementById('lb'), stage = document.getElementById('lbStage');
+  var tT = document.getElementById('lbTitle'), tS = document.getElementById('lbSub'), tO = document.getElementById('lbOrig');
+  var cur = -1, blobUrl = null, loadTok = 0;
+  function revokeBlob() {
+    if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} blobUrl = null; }
+  }
+  function stop() {
+    loadTok++;                       /* 作废还没回来的下载 */
+    var v = stage.querySelector('video');
+    if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
+    stage.innerHTML = ''; revokeBlob();
+  }
+  /* 很多静态托管（含当前部署的这台）不支持 HTTP Range 请求：
+     浏览器发的 bytes=0-1023 会被当成整文件返回 200，Safari/移动端直接拒播。
+     这里在 http(s) 下改成整段下载 → Blob → objectURL 播放，绕开 Range。
+     file:// 直接打开没有这个限制，也有 CORS 问题，所以走原生 src。 */
+  function loadVideo(el, url) {
+    if (location.protocol === 'file:') { el.src = url; return; }
+    var tok = loadTok;
+    stage.classList.add('loading');
+    fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.blob();
+    }).then(function (b) {
+      if (tok !== loadTok) return;   /* 已经切走了，丢掉 */
+      blobUrl = URL.createObjectURL(b);
+      el.src = blobUrl; el.load();
+      stage.classList.remove('loading');
+      tryPlay(el);
+    })['catch'](function () {
+      if (tok !== loadTok) return;
+      stage.classList.remove('loading');
+      el.src = url; el.load();       /* 兜底：还是走原生 */
+      tryPlay(el);
+    });
+  }
+  function tryPlay(el) {
+    var p = el.play();
+    if (p && p['catch']) p['catch'](function () {
+      /* 浏览器拦了带声音的自动播放 → 静音重试 */
+      el.muted = true;
+      var q = el.play(); if (q && q['catch']) q['catch'](function () {});
+    });
+  }
+  function show(i) {
+    if (i < 0 || i >= cards.length) return;
+    cur = i; var c = cards[i], el; stop();
+    if (c.type === 'video') {
+      el = document.createElement('video');
+      el.poster = 'assets/poster/' + c.key + '.jpg';
+      el.controls = true; el.autoplay = true; el.playsInline = true;
+      el.preload = 'auto'; el.playsinline = true;
+      loadVideo(el, 'assets/video/' + c.key + '.mp4');
+    } else {
+      el = document.createElement('img');
+      el.src = 'assets/img/' + c.key + '.jpg'; el.alt = c.src;
+    }
+    stage.appendChild(el);
+    tT.textContent = c.label; tS.textContent = c.sub; tO.textContent = c.src;
+    lb.classList.add('on'); document.body.style.overflow = 'hidden';
+    document.getElementById('lbX').focus();
+  }
+  function close() { stop(); lb.classList.remove('on'); document.body.style.overflow = ''; cur = -1; }
+
+  var toastEl = null, toastTimer = null;
+  function toast(msg, undo) {
+    if (toastEl) { toastEl.remove(); clearTimeout(toastTimer); }
+    var d = document.createElement('div');
+    d.className = 'toast';
+    d.innerHTML = '<span></span>';
+    d.firstChild.textContent = msg;
+    if (undo) {
+      var b = document.createElement('button');
+      b.textContent = '撤销';
+      b.onclick = function () { undo(); d.remove(); clearTimeout(toastTimer); };
+      d.appendChild(b);
+    }
+    document.body.appendChild(d); toastEl = d;
+    toastTimer = setTimeout(function () { d.remove(); toastEl = null; }, 8000);
+  }
+
+  function applyEditable() {
+    var on = document.body.classList.contains('editmode');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function (el) {
+      el.contentEditable = on ? 'true' : 'false';
+    });
+  }
+
+  function bind() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-sec]'), function (b) {
+      b.onclick = function () { sel.sec = b.dataset.sec; sel.grp = 'ALL'; saveSel(); render(); scrollTop(); };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-grp]'), function (b) {
+      b.onclick = function () { sel.grp = b.dataset.grp; saveSel(); render(); scrollTop(); };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-goto]'), function (b) {
+      b.onclick = function () {
+        var S = C.sections.filter(function (x) { return x.slug === sel.sec; })[0];
+        sel.grp = S.groups[+b.dataset.goto].slug; saveSel(); render(); scrollTop();
+      };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function (b) {
+      b.onclick = function (ev) {
+        ev.stopPropagation();
+        var ks = b.dataset.del.split('.'), a = +ks[0], c = +ks[1];
+        var S = C.sections[a], g = S.groups[c];
+        if (!confirm('删除小类「' + g.title + '」及其下 ' + g.items.length + ' 条素材？\n\n删除后 8 秒内可撤销。')) return;
+        var bak = JSON.parse(JSON.stringify(g));
+        S.groups.splice(c, 1); sel.grp = 'ALL';
+        save(); saveSel(); render();
+        toast('已删除「' + bak.title + '」', function () {
+          C.sections[a].groups.splice(c, 0, bak); save(); render();
+        });
+      };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-add]'), function (b) {
+      b.onclick = function () {
+        var a = +b.dataset.add, name = prompt('新小类名称：');
+        if (!name) return;
+        var S = C.sections[a], kind = S.groups.length ? S.groups[0].kind : 'video';
+        var g = { slug: S.slug + '-g' + Date.now(), title: name, kind: kind, desc: '', items: [] };
+        S.groups.push(g); sel.grp = g.slug;
+        save(); saveSel(); render();
+      };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.vcard'), function (el) {
+      var i = parseInt(el.dataset.i, 10);
+      el.addEventListener('click', function (ev) {
+        if (ev.target.classList.contains('hidex')) return;
+        if (!document.body.classList.contains('editmode')) show(i);
+      });
+      el.addEventListener('keydown', function (ev) {
+        if ((ev.key === 'Enter' || ev.key === ' ') && ev.target === el) { ev.preventDefault(); show(i); }
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.hidex'), function (b) {
+      b.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        if (!confirm('隐藏这条素材？')) return;
+        var ks = b.dataset.hide.split('.'), o = C;
+        for (var i = 0; i < ks.length - 1; i++) { o = o[ks[i]]; }
+        o[ks[ks.length - 1]].hidden = true;
+        save(); render();
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function (el) {
+      var put = function () { setPath(el.dataset.edit, el.innerHTML); };
+      el.addEventListener('input', put);
+      el.addEventListener('blur', put);
+      el.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); el.blur(); }
+      });
+    });
+    applyEditable();
+  }
+  function scrollTop() {
+    var t = document.querySelector('.tabs1');
+    if (t) window.scrollTo({ top: t.offsetTop - 16, behavior: 'smooth' });
+  }
+
+  document.getElementById('lbX').onclick = close;
+  document.getElementById('lbPrev').onclick = function () { show(cur - 1); };
+  document.getElementById('lbNext').onclick = function () { show(cur + 1); };
+  lb.addEventListener('click', function (ev) { if (ev.target === lb) close(); });
+  document.addEventListener('keydown', function (ev) {
+    if (lb.classList.contains('on')) {
+      if (ev.key === 'Escape') close();
+      else if (ev.key === 'ArrowLeft') show(cur - 1);
+      else if (ev.key === 'ArrowRight') show(cur + 1);
+    }
+  });
+
+  render();
+  }
+
+  boot(window.CONTENT);
+})();
+</script>
+</body>
+</html>
