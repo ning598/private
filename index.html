@@ -126,8 +126,10 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
 .secdesc { font-size:.93rem; line-height:1.8; color:var(--ink-mid); max-width:50rem; margin:var(--s4) 0 0; }
 
 /* ============ 三级：小类 Tab ============ */
-/* 各级标签：圆角文本框，自然宽度不拉伸，靠字重/色彩区层级 */
-.tabbar { display:flex; flex-wrap:wrap; align-items:center; gap:var(--s3); margin-top:var(--s6); }
+/* 各级标签：圆角药丸，按标签数量等宽平分整行 */
+.tabbar { display:grid; grid-auto-flow:column; grid-auto-columns:1fr;
+  align-items:stretch; gap:var(--s3); margin-top:var(--s6); }
+.tabbar > button { justify-self:stretch; width:100%; min-width:0; text-align:center; }
 .tabs2 { padding-bottom:var(--s4); border-bottom:2px solid var(--line); }
 .tabs3 { margin-top:var(--s4); padding-bottom:var(--s3); border-bottom:1px dashed var(--line); }
 .tabs4 { margin-top:var(--s3); }
@@ -313,6 +315,7 @@ body.editmode .addrow { display:block; }
   .h1wrap { gap:var(--s3); }
   .tab1 { padding:var(--s2) var(--s3); }
   .sechead { padding:var(--s4); }
+  .tabbar { grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-columns:auto; }
 }
 </style>
 </head>
@@ -486,8 +489,29 @@ body.editmode .addrow { display:block; }
       '<strong>' + title + '</strong> <em>· ' + hint + '</em></span></div>';
   }
 
+  /* 扁平模块：不生成任何二级标签，点大类标签直接铺全部素材 */
+  function flatView(si, S) {
+    var h = [], out = [];
+    S.groups.forEach(function (g, gi) { collectDeep(g, [gi], out); });
+    h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no +
+      '.ALL</span><h3>' + (S.flatTitle || '全部素材') + '</h3><span class="gstat">' + out.length + ' 项</span></div>');
+    if (S.desc) h.push('<p class="gdesc">' + S.desc + '</p>');
+    if (!out.length) return h.join('') + '<div class="empty">这个模块还没有素材。</div>';
+    h.push('<div class="grid">');
+    out.forEach(function (rec) {
+      var kind = kindOf(rec.node);
+      h.push(cardHtml({ kind: kind, items: rec.node.items }, 0, si, rec.it, '',
+        editBaseOf(si, rec.idxPath)));
+      cards.push({ type: kind, key: rec.it.key, label: rec.it.label,
+        sub: rec.it.sub || '点击查看大图', src: rec.it.src });
+    });
+    h.push('</div>');
+    return h.join('');
+  }
+
   /* 内容区：提示条 + 当前节点素材同时展示，选到哪层给哪层提示 */
   function contentView(si, S) {
+    if (S.flat) return flatView(si, S);
     if (sel.path.length && !validPath(S, sel.path)) { sel.path = []; saveSel(); }
     if (!S.groups.length) {
       return '<div class="empty">该模块素材整理中，暂无可浏览的分类。</div>';
@@ -621,12 +645,12 @@ body.editmode .addrow { display:block; }
       '<div class="secrule"></div>' +
       '<p class="secdesc"' + ed('sections.' + si + '.desc') + '>' + S.desc + '</p></div>');
 
-    /* 二级及以下：多级标签 */
-    h.push(tabsHtml(S));
+    /* 二级及以下：多级标签（扁平模块无二级标签） */
+    if (!S.flat) h.push(tabsHtml(S));
 
     h.push(contentView(si, S));
 
-    h.push('<div class="addrow"><button class="gbtn" data-add="' + si + '">+ 新增小类</button></div>');
+    if (!S.flat) h.push('<div class="addrow"><button class="gbtn" data-add="' + si + '">+ 新增小类</button></div>');
     h.push('</section>');
 
     h.push('<footer><p><strong>关于本页。</strong><span' + ed('footer') + '>' + C.footer + '</span></p></footer>');

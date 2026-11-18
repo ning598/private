@@ -1,5 +1,5 @@
 window.CONTENT = {
-  "rev": 1794990602905,
+  "rev": 1794991897932,
   "meta": {
     "eyebrow": "AIGC 广告创意 · 作品集 · 2026",
     "h1a": "张丹蕾",
@@ -45,10 +45,222 @@ window.CONTENT = {
           "slug": "ovv-fin",
           "title": "金融",
           "kind": "video",
-          "desc": "海外金融信贷效果广告，覆盖图片与视频两类素材，视频按口播 / 剧情 / 动画继续细分。",
+          "desc": "海外金融信贷效果广告，覆盖视频与图片两类素材；视频按口播 / 剧情 / 动画继续细分。",
           "items": [],
           "box": "9:16",
           "children": [
+            {
+              "slug": "fin-vid",
+              "title": "视频素材",
+              "kind": "video",
+              "desc": "海外金融信贷效果广告视频，按创意形式细分。",
+              "items": [],
+              "children": [
+                {
+                  "slug": "fin-v-koubo",
+                  "title": "口播",
+                  "kind": "video",
+                  "desc": "真人口播、客服形象、新闻采访式表达。",
+                  "items": [
+                    {
+                      "key": "koubo-01",
+                      "label": "多人口播",
+                      "src": "v06-260429.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:28",
+                      "ratio": "9:16",
+                      "dur": 28
+                    },
+                    {
+                      "key": "koubo-05",
+                      "label": "创意向：第一人称视角",
+                      "src": "mib-Nigeria-SunBay-v10-260807-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:15",
+                      "ratio": "9:16",
+                      "dur": 15
+                    },
+                    {
+                      "key": "koubo-04",
+                      "label": "本土身份小商贩经验分享",
+                      "src": "mib-Nigeria-SunBay-v05-260807-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:37",
+                      "ratio": "9:16",
+                      "dur": 37
+                    },
+                    {
+                      "key": "koubo-02",
+                      "label": "人物口播+固定板式",
+                      "src": "mib-Nigeria-SunBay-v08-260703-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:16",
+                      "ratio": "9:16",
+                      "dur": 16
+                    },
+                    {
+                      "key": "koubo-08",
+                      "label": "人物口播+固定板式",
+                      "src": "mib-Nigeria-SunBay-v10-260717-pq.mp4",
+                      "sub": "1080×1080 · 1:1 · 0:24",
+                      "ratio": "1:1",
+                      "dur": 24
+                    },
+                    {
+                      "key": "news-01",
+                      "label": "新闻采访类 01",
+                      "src": "mib-Nigeria-SunBay-v07-2606018-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:16",
+                      "ratio": "9:16",
+                      "dur": 16
+                    },
+                    {
+                      "key": "koubo-10",
+                      "label": "客服口播",
+                      "src": "客服口播.mp4",
+                      "sub": "1080×1080 · 1:1 · 0:18",
+                      "ratio": "1:1",
+                      "dur": 18
+                    },
+                    {
+                      "key": "koubo-11",
+                      "label": "海报口播",
+                      "src": "海报口播.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:12",
+                      "ratio": "9:16",
+                      "dur": 12
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "slug": "fin-v-juqing",
+                  "title": "剧情",
+                  "kind": "video",
+                  "desc": "情景短剧与理想爽感类内容。",
+                  "items": [
+                    {
+                      "key": "drama-01",
+                      "label": "剧情类 01",
+                      "src": "v04-260522.mp4",
+                      "sub": "480×854 · 9:16 · 0:17",
+                      "ratio": "9:16",
+                      "dur": 17
+                    },
+                    {
+                      "key": "drama-02",
+                      "label": "剧情类 02",
+                      "src": "v05-260522.mp4",
+                      "sub": "480×854 · 9:16 · 0:18",
+                      "ratio": "9:16",
+                      "dur": 18
+                    },
+                    {
+                      "key": "drama-03",
+                      "label": "剧情类 03",
+                      "src": "v04-260429.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:20",
+                      "ratio": "9:16",
+                      "dur": 20
+                    },
+                    {
+                      "key": "drama-04",
+                      "label": "剧情类 04",
+                      "src": "mib-Nigeria-SunBay-v04-260717-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:16",
+                      "ratio": "9:16",
+                      "dur": 16
+                    },
+                    {
+                      "key": "drama-05",
+                      "label": "剧情类 05",
+                      "src": "4.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:17",
+                      "ratio": "9:16",
+                      "dur": 17
+                    },
+                    {
+                      "key": "thrill-01",
+                      "label": "理想爽感类 01",
+                      "src": "v04-260415.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:10",
+                      "ratio": "9:16",
+                      "dur": 10
+                    },
+                    {
+                      "key": "thrill-02",
+                      "label": "理想爽感类 02",
+                      "src": "mib-Nigeria-SunBay-v13-260731-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:16",
+                      "ratio": "9:16",
+                      "dur": 16
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "slug": "fin-v-anim",
+                  "title": "动画",
+                  "kind": "video",
+                  "desc": "动画演绎与本土化 IP 卡通形象。",
+                  "items": [
+                    {
+                      "key": "anim-01",
+                      "label": "动画类 01",
+                      "src": "mib-Nigeria-SunBay-v09-260703-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:11",
+                      "ratio": "9:16",
+                      "dur": 11
+                    },
+                    {
+                      "key": "anim-02",
+                      "label": "动画类 02",
+                      "src": "mib-Nigeria-SunBay-v01-260821-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:15",
+                      "ratio": "9:16",
+                      "dur": 15
+                    },
+                    {
+                      "key": "anim-03",
+                      "label": "动画类 03",
+                      "src": "mib-Nigeria-SunBay-v10-260703-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:11",
+                      "ratio": "9:16",
+                      "dur": 11
+                    },
+                    {
+                      "key": "anim-04",
+                      "label": "动画类 04",
+                      "src": "mib-Nigeria-SunBay-v02-260821-pq.mp4",
+                      "sub": "1080×1080 · 1:1 · 0:21",
+                      "ratio": "1:1",
+                      "dur": 21
+                    },
+                    {
+                      "key": "ip-01",
+                      "label": "本土化ip卡通形象口播",
+                      "src": "mib-Thailand-พรเงิน-v06-260828-pq.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:28",
+                      "ratio": "9:16",
+                      "dur": 28
+                    },
+                    {
+                      "key": "ip-02",
+                      "label": "动物ip形象",
+                      "src": "动物ip.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:28",
+                      "ratio": "9:16",
+                      "dur": 28
+                    },
+                    {
+                      "key": "ip-03",
+                      "label": "锅底清洁 拟人",
+                      "src": "potcleaner-v10.mp4",
+                      "sub": "1080×1920 · 9:16 · 0:23",
+                      "ratio": "9:16",
+                      "dur": 23
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
             {
               "slug": "fin-img",
               "title": "图片素材",
@@ -345,234 +557,6 @@ window.CONTENT = {
                   "children": []
                 }
               ]
-            },
-            {
-              "slug": "fin-vid",
-              "title": "视频素材",
-              "kind": "video",
-              "desc": "海外金融信贷效果广告视频，按创意形式细分。",
-              "items": [],
-              "children": [
-                {
-                  "slug": "fin-v-koubo",
-                  "title": "口播",
-                  "kind": "video",
-                  "desc": "真人口播、客服形象、新闻采访式表达。",
-                  "items": [
-                    {
-                      "key": "koubo-01",
-                      "label": "多人口播",
-                      "src": "v06-260429.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:28",
-                      "ratio": "9:16",
-                      "dur": 28
-                    },
-                    {
-                      "key": "koubo-05",
-                      "label": "创意向：第一人称视角",
-                      "src": "mib-Nigeria-SunBay-v10-260807-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:15",
-                      "ratio": "9:16",
-                      "dur": 15
-                    },
-                    {
-                      "key": "koubo-03",
-                      "label": "泰国人物自然真实",
-                      "src": "视频4-修改.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:27",
-                      "ratio": "9:16",
-                      "dur": 27
-                    },
-                    {
-                      "key": "koubo-04",
-                      "label": "本土身份小商贩经验分享",
-                      "src": "mib-Nigeria-SunBay-v05-260807-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:37",
-                      "ratio": "9:16",
-                      "dur": 37
-                    },
-                    {
-                      "key": "koubo-06",
-                      "label": "品牌客服形象",
-                      "src": "mib-Nigeria-SunBay-v11-260703-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:16",
-                      "ratio": "9:16",
-                      "dur": 16
-                    },
-                    {
-                      "key": "koubo-02",
-                      "label": "人物口播+固定板式",
-                      "src": "mib-Nigeria-SunBay-v08-260703-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:16",
-                      "ratio": "9:16",
-                      "dur": 16
-                    },
-                    {
-                      "key": "koubo-07",
-                      "label": "人物口播+固定板式",
-                      "src": "mib-Nigeria-SunBay-v08-260724-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:13",
-                      "ratio": "9:16",
-                      "dur": 13
-                    },
-                    {
-                      "key": "koubo-08",
-                      "label": "人物口播+固定板式",
-                      "src": "mib-Nigeria-SunBay-v10-260717-pq.mp4",
-                      "sub": "1080×1080 · 1:1 · 0:24",
-                      "ratio": "1:1",
-                      "dur": 24
-                    },
-                    {
-                      "key": "koubo-09",
-                      "label": "人物口播+固定板式",
-                      "src": "mib-Nigeria-SunBay-v04-260625-pq.mp4",
-                      "sub": "1080×1080 · 1:1 · 0:14",
-                      "ratio": "1:1",
-                      "dur": 14
-                    },
-                    {
-                      "key": "news-01",
-                      "label": "新闻采访类 01",
-                      "src": "mib-Nigeria-SunBay-v07-2606018-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:16",
-                      "ratio": "9:16",
-                      "dur": 16
-                    }
-                  ],
-                  "children": []
-                },
-                {
-                  "slug": "fin-v-juqing",
-                  "title": "剧情",
-                  "kind": "video",
-                  "desc": "情景短剧与理想爽感类内容。",
-                  "items": [
-                    {
-                      "key": "drama-01",
-                      "label": "剧情类 01",
-                      "src": "v04-260522.mp4",
-                      "sub": "480×854 · 9:16 · 0:17",
-                      "ratio": "9:16",
-                      "dur": 17
-                    },
-                    {
-                      "key": "drama-02",
-                      "label": "剧情类 02",
-                      "src": "v05-260522.mp4",
-                      "sub": "480×854 · 9:16 · 0:18",
-                      "ratio": "9:16",
-                      "dur": 18
-                    },
-                    {
-                      "key": "drama-03",
-                      "label": "剧情类 03",
-                      "src": "v04-260429.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:20",
-                      "ratio": "9:16",
-                      "dur": 20
-                    },
-                    {
-                      "key": "drama-04",
-                      "label": "剧情类 04",
-                      "src": "mib-Nigeria-SunBay-v04-260717-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:16",
-                      "ratio": "9:16",
-                      "dur": 16
-                    },
-                    {
-                      "key": "drama-05",
-                      "label": "剧情类 05",
-                      "src": "4.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:17",
-                      "ratio": "9:16",
-                      "dur": 17
-                    },
-                    {
-                      "key": "thrill-01",
-                      "label": "理想爽感类 01",
-                      "src": "v04-260415.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:10",
-                      "ratio": "9:16",
-                      "dur": 10
-                    },
-                    {
-                      "key": "thrill-02",
-                      "label": "理想爽感类 02",
-                      "src": "mib-Nigeria-SunBay-v13-260731-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:16",
-                      "ratio": "9:16",
-                      "dur": 16
-                    }
-                  ],
-                  "children": []
-                },
-                {
-                  "slug": "fin-v-anim",
-                  "title": "动画",
-                  "kind": "video",
-                  "desc": "动画演绎与本土化 IP 卡通形象。",
-                  "items": [
-                    {
-                      "key": "anim-01",
-                      "label": "动画类 01",
-                      "src": "mib-Nigeria-SunBay-v09-260703-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:11",
-                      "ratio": "9:16",
-                      "dur": 11
-                    },
-                    {
-                      "key": "anim-02",
-                      "label": "动画类 02",
-                      "src": "mib-Nigeria-SunBay-v01-260821-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:15",
-                      "ratio": "9:16",
-                      "dur": 15
-                    },
-                    {
-                      "key": "anim-03",
-                      "label": "动画类 03",
-                      "src": "mib-Nigeria-SunBay-v10-260703-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:11",
-                      "ratio": "9:16",
-                      "dur": 11
-                    },
-                    {
-                      "key": "anim-04",
-                      "label": "动画类 04",
-                      "src": "mib-Nigeria-SunBay-v02-260821-pq.mp4",
-                      "sub": "1080×1080 · 1:1 · 0:21",
-                      "ratio": "1:1",
-                      "dur": 21
-                    },
-                    {
-                      "key": "ip-01",
-                      "label": "本土化ip卡通形象口播",
-                      "src": "mib-Thailand-พรเงิน-v06-260828-pq.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:28",
-                      "ratio": "9:16",
-                      "dur": 28
-                    },
-                    {
-                      "key": "ip-02",
-                      "label": "动物ip形象",
-                      "src": "动物ip.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:28",
-                      "ratio": "9:16",
-                      "dur": 28
-                    },
-                    {
-                      "key": "ip-03",
-                      "label": "锅底清洁 拟人",
-                      "src": "potcleaner-v10.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:23",
-                      "ratio": "9:16",
-                      "dur": 23
-                    }
-                  ],
-                  "children": []
-                }
-              ]
             }
           ]
         },
@@ -805,7 +789,9 @@ window.CONTENT = {
           "children": []
         }
       ],
-      "box": "1:1"
+      "box": "1:1",
+      "flat": true,
+      "flatTitle": "管线素材总览"
     },
     {
       "slug": "cn-video",
