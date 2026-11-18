@@ -146,8 +146,14 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
   background:var(--surface-dim); color:var(--ink-mid); border:1px solid var(--line);
   border-left:3px solid var(--line-strong); border-radius:var(--r-full);
   padding:.38rem 1rem; cursor:pointer; transition:all var(--dur) var(--ease); line-height:1.5; }
-.tab3:hover { color:var(--accent); border-color:var(--accent); }
+/* 三级与二级同色系，但用更低的饱和度/浓度区分层级 */
+.tab3 { color:color-mix(in srgb, var(--accent) 62%, var(--ink-mid));
+  border-left-color:color-mix(in srgb, var(--accent) 42%, var(--surface)); }
+.tab3:hover { color:var(--accent); border-color:color-mix(in srgb, var(--accent) 55%, var(--surface)); }
 .tab3.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); box-shadow:var(--sh-1); }
+.tab3.on { background:color-mix(in srgb, var(--accent) 52%, var(--surface));
+  border-color:color-mix(in srgb, var(--accent) 62%, var(--surface));
+  color:var(--accent); box-shadow:none; }
 .tab3 .t3n { font-family:"IBM Plex Mono",monospace; font-size:.68rem; opacity:.8; margin-left:.4rem; }
 .tab3:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .tab4 { font-family:"Noto Sans SC",sans-serif; font-size:.8rem; font-weight:500;

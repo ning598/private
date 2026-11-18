@@ -1,5 +1,5 @@
 window.CONTENT = {
-  "rev": 1794991897932,
+  "rev": 1794992661639,
   "meta": {
     "eyebrow": "AIGC 广告创意 · 作品集 · 2026",
     "h1a": "张丹蕾",
@@ -231,7 +231,16 @@ window.CONTENT = {
                       "sub": "1080×1080 · 1:1 · 0:21",
                       "ratio": "1:1",
                       "dur": 21
-                    },
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "slug": "fin-v-ip",
+                  "title": "动物ip",
+                  "kind": "video",
+                  "desc": "本土化 IP 卡通形象与动物 IP 口播素材，以角色化表达承载产品信息。",
+                  "items": [
                     {
                       "key": "ip-01",
                       "label": "本土化ip卡通形象口播",
@@ -247,14 +256,6 @@ window.CONTENT = {
                       "sub": "1080×1920 · 9:16 · 0:28",
                       "ratio": "9:16",
                       "dur": 28
-                    },
-                    {
-                      "key": "ip-03",
-                      "label": "锅底清洁 拟人",
-                      "src": "potcleaner-v10.mp4",
-                      "sub": "1080×1920 · 9:16 · 0:23",
-                      "ratio": "9:16",
-                      "dur": 23
                     }
                   ],
                   "children": []
@@ -591,22 +592,6 @@ window.CONTENT = {
                   "dur": 23
                 },
                 {
-                  "key": "ecom-05",
-                  "label": "马桶清洁剂01",
-                  "src": "马桶清洁剂01.mp4",
-                  "sub": "480×854 · 9:16 · 0:27",
-                  "ratio": "9:16",
-                  "dur": 27
-                },
-                {
-                  "key": "ecom-06",
-                  "label": "马桶清洁剂02",
-                  "src": "马桶清洁剂02.mp4",
-                  "sub": "480×854 · 9:16 · 0:17",
-                  "ratio": "9:16",
-                  "dur": 17
-                },
-                {
                   "key": "ecom-07",
                   "label": "锅底清洁01强效果对比",
                   "src": "potcleaner-v01.mp4",
@@ -640,8 +625,50 @@ window.CONTENT = {
               "desc": "产品 TVC 成片与情境化表达。",
               "items": [
                 {
+                  "key": "ecom-05",
+                  "label": "马桶清洁剂01",
+                  "src": "马桶清洁剂01.mp4",
+                  "sub": "480×854 · 9:16 · 0:27",
+                  "ratio": "9:16",
+                  "dur": 27
+                },
+                {
+                  "key": "ecom-06",
+                  "label": "马桶清洁剂02",
+                  "src": "马桶清洁剂02.mp4",
+                  "sub": "480×854 · 9:16 · 0:17",
+                  "ratio": "9:16",
+                  "dur": 17
+                }
+              ],
+              "children": []
+            },
+            {
+              "slug": "ecom-ip",
+              "title": "动物ip",
+              "kind": "video",
+              "desc": "电商产品的拟人化 / 动物 IP 创意素材。",
+              "items": [
+                {
+                  "key": "ip-03",
+                  "label": "锅底清洁 拟人",
+                  "src": "potcleaner-v10.mp4",
+                  "sub": "1080×1920 · 9:16 · 0:23",
+                  "ratio": "9:16",
+                  "dur": 23
+                }
+              ],
+              "children": []
+            },
+            {
+              "slug": "ecom-ctv",
+              "title": "CTV",
+              "kind": "video",
+              "desc": "产品 CTV 成片，以情境化叙事呈现产品价值。",
+              "items": [
+                {
                   "key": "tvc-01",
-                  "label": "冲牙器 TVC",
+                  "label": "冲牙器 CTV",
                   "src": "冲牙器.mp4",
                   "sub": "1920×1080 · 16:9 · 0:32",
                   "ratio": "16:9",
@@ -649,7 +676,7 @@ window.CONTENT = {
                 },
                 {
                   "key": "tvc-02",
-                  "label": "美牙仪 TVC",
+                  "label": "美牙仪 CTV",
                   "src": "美牙仪.mp4",
                   "sub": "1920×1080 · 16:9 · 0:16",
                   "ratio": "16:9",
