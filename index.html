@@ -126,13 +126,11 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
 .secdesc { font-size:.93rem; line-height:1.8; color:var(--ink-mid); max-width:50rem; margin:var(--s4) 0 0; }
 
 /* ============ 三级：小类 Tab ============ */
-/* 各级标签：格子按数量均分整行，标签自身保持自然宽度居中（不被拉变形） */
-.tabbar { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:var(--s2);
-  align-items:center; margin-top:var(--s6); }
+/* 各级标签：圆角文本框，自然宽度不拉伸，靠字重/色彩区层级 */
+.tabbar { display:flex; flex-wrap:wrap; align-items:center; gap:var(--s3); margin-top:var(--s6); }
 .tabs2 { padding-bottom:var(--s4); border-bottom:2px solid var(--line); }
 .tabs3 { margin-top:var(--s4); padding-bottom:var(--s3); border-bottom:1px dashed var(--line); }
 .tabs4 { margin-top:var(--s3); }
-.tabbar > button { justify-self:center; white-space:nowrap; }
 .tab2 { font-family:"Noto Sans SC",sans-serif; font-size:.92rem; font-weight:600;
   background:var(--surface); color:var(--ink-mid); border:1px solid var(--line-strong);
   border-radius:var(--r-full); padding:.46rem 1.15rem; cursor:pointer;
@@ -144,8 +142,8 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
 .tab2:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .tab3 { font-family:"Noto Sans SC",sans-serif; font-size:.82rem; font-weight:600;
   background:var(--surface-dim); color:var(--ink-mid); border:1px solid var(--line);
-  border-radius:var(--r-sm); padding:.38rem 1rem; cursor:pointer;
-  transition:all var(--dur) var(--ease); line-height:1.5; }
+  border-left:3px solid var(--line-strong); border-radius:var(--r-full);
+  padding:.38rem 1rem; cursor:pointer; transition:all var(--dur) var(--ease); line-height:1.5; }
 .tab3:hover { color:var(--accent); border-color:var(--accent); }
 .tab3.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); box-shadow:var(--sh-1); }
 .tab3 .t3n { font-family:"IBM Plex Mono",monospace; font-size:.68rem; opacity:.8; margin-left:.4rem; }
