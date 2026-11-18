@@ -126,52 +126,52 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
 .secdesc { font-size:.93rem; line-height:1.8; color:var(--ink-mid); max-width:50rem; margin:var(--s4) 0 0; }
 
 /* ============ 三级：小类 Tab ============ */
-.tabs2 { display:flex; gap:var(--s3); flex-wrap:wrap; margin-top:var(--s6);
-  padding-bottom:var(--s4); border-bottom:2px solid var(--line); }
+/* 各级标签：等宽平分整行，靠形状/字重/色彩区层级 */
+.tabbar { display:flex; gap:var(--s2); margin-top:var(--s6); }
+.tabs2 { padding-bottom:var(--s4); border-bottom:2px solid var(--line); }
+.tabs3 { margin-top:var(--s4); padding-bottom:var(--s3); border-bottom:1px dashed var(--line); }
+.tabs4 { margin-top:var(--s3); }
+.tabbar > button { flex:1 1 0; min-width:0; text-align:center; }
 .tab2 { font-family:"Noto Sans SC",sans-serif; font-size:.98rem; font-weight:600;
   background:var(--surface); color:var(--ink-mid); border:1.5px solid var(--line-strong);
-  padding:.5rem 1.2rem; border-radius:var(--r-full); cursor:pointer;
+  border-radius:var(--r-full); padding:.5rem .4rem; cursor:pointer;
   transition:all var(--dur) var(--ease); line-height:1.5; }
 .tab2:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
 .tab2.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); font-weight:700;
   box-shadow:var(--sh-1); }
-.tab2 .t2n { font-family:"IBM Plex Mono",monospace; font-size:.72rem; opacity:.8; margin-left:.38rem; }
+.tab2 .t2n { font-family:"IBM Plex Mono",monospace; font-size:.72rem; opacity:.8; margin-left:.3rem; }
 .tab2:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-/* 二/三/四级标签：形状、字重、色彩逐层递减，层级一眼可分 */
-.tabs3 { display:flex; gap:var(--s2); flex-wrap:wrap; margin-top:var(--s4);
-  padding:.2rem 0 var(--s3) var(--s4); border-bottom:1px dashed var(--line); }
 .tab3 { font-family:"Noto Sans SC",sans-serif; font-size:.86rem; font-weight:600;
   background:var(--surface-dim); color:var(--ink-mid); border:1px solid var(--line);
-  border-left:3px solid var(--line-strong); border-radius:var(--r-sm);
-  padding:.34rem .9rem; cursor:pointer; transition:all var(--dur) var(--ease); line-height:1.5; }
-.tab3:hover { color:var(--accent); border-left-color:var(--accent); }
-.tab3.on { background:var(--surface); color:var(--accent); border-left-color:var(--accent); box-shadow:var(--sh-1); }
-.tab3 .t3n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.75; margin-left:.38rem; }
+  border-top:3px solid var(--line-strong); border-radius:var(--r-sm);
+  padding:.34rem .4rem; cursor:pointer; transition:all var(--dur) var(--ease); line-height:1.5; }
+.tab3:hover { color:var(--accent); border-top-color:var(--accent); }
+.tab3.on { background:var(--surface); color:var(--accent); border-top-color:var(--accent); box-shadow:var(--sh-1); }
+.tab3 .t3n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.75; margin-left:.3rem; }
 .tab3:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-/* 四级：纯文字下划线，最轻 */
-.tabs4 { display:flex; gap:var(--s4); flex-wrap:wrap; margin-top:var(--s3); padding-left:var(--s5); }
 .tab4 { font-family:"Noto Sans SC",sans-serif; font-size:.82rem; font-weight:500;
   background:none; border:0; border-bottom:2px solid transparent; color:var(--ink-soft);
   padding:.25rem .1rem; cursor:pointer; transition:all var(--dur) var(--ease); line-height:1.5; }
 .tab4:hover { color:var(--accent); }
 .tab4.on { color:var(--accent); border-bottom-color:var(--accent); font-weight:700; }
-.tab4 .t4n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.75; margin-left:.28rem; }
+.tab4 .t4n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.75; margin-left:.24rem; }
 .tab4:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 
-/* 引导卡：先选行业 → 再选类型 → 才出素材 */
-.guide { margin-top:var(--s6); display:flex; align-items:flex-start; gap:var(--s5);
-  padding:var(--s8) var(--s7); border:1px dashed var(--line-strong); border-radius:var(--r-md);
-  background:var(--surface-dim); }
-.guide-arrow { flex:none; font-family:"IBM Plex Mono",monospace; font-size:1.7rem;
-  line-height:1; color:var(--accent); }
-.guide-body { min-width:0; }
-.guide-body strong { display:block; font-family:"Fraunces","Noto Serif SC",Georgia,serif;
-  font-size:1.1rem; color:var(--ink); }
-.guide-body p { margin:.35rem 0 0; font-size:.86rem; color:var(--ink-mid); line-height:1.7; }
-.guide-steps { display:flex; gap:var(--s2); flex-wrap:wrap; margin-top:var(--s4); }
-.gstep { font-family:"IBM Plex Mono",monospace; font-size:.68rem; padding:.22rem .6rem;
-  border:1px solid var(--line); border-radius:var(--r-full); color:var(--ink-soft); background:var(--surface); }
-.gstep.on { color:var(--on-tone); background:var(--accent); border-color:var(--accent); font-weight:700; }
+/* 轻量提示条：向上箭头指向标签，淡入，不占据视觉重心 */
+.hint { display:flex; align-items:center; gap:.7rem; margin-top:var(--s5);
+  padding:.62rem .9rem; background:var(--surface-dim); border:1px solid var(--line);
+  border-left:3px solid var(--accent); border-radius:var(--r-sm);
+  font-size:.82rem; color:var(--ink-mid); animation:hintIn .35s var(--ease); }
+.hint-arrow { position:relative; width:14px; height:10px; flex:none; }
+.hint-arrow::before { content:""; position:absolute; top:0; left:1px;
+  border-left:6px solid transparent; border-right:6px solid transparent;
+  border-bottom:8px solid var(--accent); }
+.hint-arrow::after { content:""; position:absolute; bottom:0; left:6px;
+  width:2px; height:5px; background:var(--accent); }
+.hint-text { line-height:1.6; }
+.hint-text strong { color:var(--accent); font-weight:700; }
+.hint-text em { font-style:normal; color:var(--ink-soft); }
+@keyframes hintIn { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:translateY(0); } }
 
 /* ============ 视图 A：大类概览（小类卡片墙） ============ */
 .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));
@@ -452,7 +452,7 @@ body.editmode .addrow { display:block; }
   /* 生成层级标签：二级(行业) 药丸 / 三级 方形描边 / 四级 文字下划线 */
   function tabsHtml(S) {
     var h = [];
-    h.push('<div class="tabs2" role="tablist" aria-label="行业方向">');
+    h.push('<div class="tabbar tabs2" role="tablist" aria-label="行业方向">');
     S.groups.forEach(function (g) {
       var on = sel.path[0] === g.slug;
       h.push('<button class="tab2' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
@@ -468,7 +468,7 @@ body.editmode .addrow { display:block; }
       var cls = d === 0 ? 'tabs3' : 'tabs4';
       var tcls = d === 0 ? 'tab3' : 'tab4';
       var ncls = d === 0 ? 't3n' : 't4n';
-      h.push('<div class="' + cls + '" role="tablist" aria-label="' + node.title + '细分">');
+      h.push('<div class="tabbar ' + cls + '" role="tablist" aria-label="' + node.title + '细分">');
       kids.forEach(function (c) {
         var on = sel.path[d + 1] === c.slug;
         var p = sel.path.slice(0, d + 1).concat([c.slug]).join('/');
@@ -481,43 +481,39 @@ body.editmode .addrow { display:block; }
     return h.join('');
   }
 
-  /* 引导卡：未选到叶子节点时提示下一步，不直接铺素材 */
-  function guideHtml(step, title, hint) {
-    var steps = ['选择行业', '选择类型', '查看素材'];
-    var h = ['<div class="guide"><span class="guide-arrow">&uarr;</span><div class="guide-body">'];
-    h.push('<strong>' + title + '</strong><p>' + hint + '</p><div class="guide-steps">');
-    steps.forEach(function (s, i) {
-      h.push('<span class="gstep' + (i === step ? ' on' : '') + '">' + (i + 1) + ' ' + s + '</span>');
-    });
-    h.push('</div></div></div>');
-    return h.join('');
+  /* 轻量提示条：箭头指向上方标签，选到哪层提示哪层，素材照常显示 */
+  function hintHtml(title, hint) {
+    return '<div class="hint"><span class="hint-arrow"></span><span class="hint-text">' +
+      '<strong>' + title + '</strong> <em>· ' + hint + '</em></span></div>';
   }
 
-  /* 内容区：未到叶子只给引导，到叶子才展开素材 */
+  /* 内容区：提示条 + 当前节点素材同时展示，选到哪层给哪层提示 */
   function contentView(si, S) {
     if (sel.path.length && !validPath(S, sel.path)) { sel.path = []; saveSel(); }
     if (!S.groups.length) {
       return '<div class="empty">该模块素材整理中，暂无可浏览的分类。</div>';
     }
+    var h = [], node = null;
     if (!sel.path.length) {
-      return guideHtml(0, '请先选择行业方向',
-        '点击上方的行业标签（如「金融」「电商」），再按提示逐层选择具体类型。');
+      h.push(hintHtml('选择行业', '点击上方标签，下方会展示该方向的全部素材'));
+      h.push('<div class="empty">↑ 请先选择一个行业标签，素材会显示在这里</div>');
+      return h.join('');
+    } else {
+      node = nodeAt(S, sel.path);
+      if (!node) { sel.path = []; saveSel(); return contentView(si, S); }
+      var kids = node.children || [];
+      if (kids.length) {
+        var opts = kids.map(function (c) { return '「' + c.title + '」'; }).join(' / ');
+        h.push(hintHtml(node.title, '可继续点击下方 ' + opts + ' 细分；下方已展示当前方向全部素材'));
+      } else {
+        h.push(hintHtml(node.title, '已到最细分类，下方为对应素材'));
+      }
     }
-    var node = nodeAt(S, sel.path);
-    if (!node) { sel.path = []; saveSel(); return contentView(si, S); }
-    var kids = node.children || [];
-    if (kids.length) {
-      var opts = kids.map(function (c) { return '「' + c.title + '」'; }).join(' / ');
-      return guideHtml(Math.min(sel.path.length, 2), '请继续选择细分类型',
-        '已选中「' + node.title + '」。点击下方 ' + opts + '，继续查看对应素材。');
-    }
-
-    var h = [], out = [], idxs = pathIndices(S, sel.path);
+    var out = [], idxs = pathIndices(S, sel.path);
     collectDeep(node, idxs, out);
     var label = sel.path.map(function (_, i) { return i + 1; }).join('.');
     h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no + '.' + label +
-      '</span><h3' + ed('sections.' + si + '.groups.' + idxs[0] + (idxs.length > 1 ? '.children.' + idxs.slice(1).join('.children.') : '') + '.title') +
-      '>' + node.title + '</h3><span class="gstat">' + out.length + ' 项</span></div>');
+      '</span><h3>' + node.title + '</h3><span class="gstat">' + out.length + ' 项</span></div>');
     if (node.desc) h.push('<p class="gdesc">' + node.desc + '</p>');
     if (!out.length) {
       h.push('<div class="empty">这个分类还没有素材。</div>');
