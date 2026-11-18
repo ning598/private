@@ -66,8 +66,10 @@ h1 em { font-style:normal; color:var(--c1); }
 .standfirst ul { margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:var(--s2); }
 .standfirst li { padding-left:.15rem; }
 .standfirst strong { color:var(--ink); font-weight:700; }
-.meta-row { display:flex; flex-wrap:wrap; gap:.3rem 1.4rem;
-  font-family:"IBM Plex Mono","Noto Sans SC",monospace; font-size:.74rem; color:var(--ink-soft); }
+.meta-row { display:flex; flex-wrap:wrap; gap:.3rem 1.4rem; }
+.meta-row span { font-family:"Noto Sans SC",sans-serif; font-size:1.05rem; font-weight:600;
+  color:var(--ink); line-height:1.6; padding:.4rem .85rem; border-left:3px solid var(--c1);
+  background:var(--surface-dim); border-radius:0 var(--r-sm) var(--r-sm) 0; }
 
 /* ============ 数据条 ============ */
 .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
