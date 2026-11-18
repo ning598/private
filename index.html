@@ -62,9 +62,9 @@ h1 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:800;
   margin:0; text-wrap:balance; }
 h1 em { font-style:normal; color:var(--c1); }
 /* 用 div 而不是 p：standfirst 里可能有 ul/li，p 里嵌 ul 会被浏览器拆开 */
-.standfirst { font-size:1.02rem; line-height:1.78; color:var(--ink-mid); max-width:46rem; margin:0; }
+.standfirst { font-size:.84rem; line-height:1.9; color:var(--ink-mid); max-width:none; margin:0; overflow-x:auto; }
 .standfirst ul { margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:var(--s2); }
-.standfirst li { padding-left:.15rem; }
+.standfirst li { padding-left:.15rem; white-space:nowrap; width:max-content; max-width:100%; }
 .standfirst strong { color:var(--ink); font-weight:700; }
 .meta-row { display:flex; flex-wrap:wrap; gap:.3rem 1.4rem; }
 .meta-row span { font-family:"Noto Sans SC",sans-serif; font-size:1.05rem; font-weight:600;
@@ -126,16 +126,29 @@ h2 { font-family:"Fraunces","Noto Serif SC",Georgia,serif; font-weight:700;
 .secdesc { font-size:.93rem; line-height:1.8; color:var(--ink-mid); max-width:50rem; margin:var(--s4) 0 0; }
 
 /* ============ 三级：小类 Tab ============ */
-.tabs2 { display:flex; gap:var(--s2); flex-wrap:wrap; margin-top:var(--s6);
-  padding-bottom:var(--s3); border-bottom:1px solid var(--line); }
-.tab2 { font-family:"Noto Sans SC",sans-serif; font-size:.82rem; font-weight:500;
-  background:var(--surface); color:var(--ink-mid); border:1px solid var(--line);
-  padding:.32rem .8rem; border-radius:var(--r-full); cursor:pointer;
+.tabs2 { display:flex; gap:var(--s3); flex-wrap:wrap; margin-top:var(--s6);
+  padding-bottom:var(--s4); border-bottom:2px solid var(--line); }
+.tab2 { font-family:"Noto Sans SC",sans-serif; font-size:.98rem; font-weight:600;
+  background:var(--surface); color:var(--ink-mid); border:1.5px solid var(--line-strong);
+  padding:.5rem 1.2rem; border-radius:var(--r-full); cursor:pointer;
   transition:all var(--dur) var(--ease); line-height:1.5; }
-.tab2:hover { border-color:var(--accent); color:var(--accent); }
-.tab2.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); font-weight:700; }
-.tab2 .t2n { font-family:"IBM Plex Mono",monospace; font-size:.7rem; opacity:.7; margin-left:.3rem; }
+.tab2:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+.tab2.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); font-weight:700;
+  box-shadow:var(--sh-1); }
+.tab2 .t2n { font-family:"IBM Plex Mono",monospace; font-size:.72rem; opacity:.8; margin-left:.38rem; }
 .tab2:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+/* 三级/四级标签：次级视觉，缩进区分层级 */
+.tabs3 { display:flex; gap:var(--s2); flex-wrap:wrap; margin-top:var(--s3);
+  padding:.2rem 0 var(--s3) var(--s4); border-bottom:1px dashed var(--line); }
+.tabs3::before { content:""; width:100%; height:0; }
+.tab3 { font-family:"Noto Sans SC",sans-serif; font-size:.8rem; font-weight:500;
+  background:var(--surface-dim); color:var(--accent); border:1px solid var(--line);
+  padding:.26rem .78rem; border-radius:var(--r-full); cursor:pointer;
+  transition:all var(--dur) var(--ease); line-height:1.5; }
+.tab3:hover { border-color:var(--accent); background:var(--surface); }
+.tab3.on { background:var(--accent); border-color:var(--accent); color:var(--on-tone); font-weight:700; }
+.tab3 .t3n { font-family:"IBM Plex Mono",monospace; font-size:.68rem; opacity:.75; margin-left:.3rem; }
+.tab3:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 
 /* ============ 视图 A：大类概览（小类卡片墙） ============ */
 .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));
@@ -304,11 +317,12 @@ body.editmode .addrow { display:block; }
     var sv = localStorage.getItem(LS);
     if (sv) { var s = JSON.parse(sv); if (s && s.rev === C.rev) C = s; else localStorage.removeItem(LS); }
   } catch (e) {}
-  var sel = { sec: C.sections[0].slug, grp: 'ALL' };
+  var sel = { sec: C.sections[0].slug, grp: 'ALL', path: [] };
   try {
     var ss = localStorage.getItem(SEL_KEY);
     if (ss) { var p = JSON.parse(ss); if (p && p.sec) sel = p; }
   } catch (e) {}
+  if (!Array.isArray(sel.path)) sel.path = [];
   var cards = [];
 
   function save() { try { localStorage.setItem(LS, JSON.stringify(C)); } catch (e) {} }
@@ -338,8 +352,9 @@ body.editmode .addrow { display:block; }
   function srcOf(kind, key) {
     return 'assets/' + (kind === 'video' ? 'poster' : 'thumb') + '/' + key + '.jpg';
   }
-  function cardHtml(g, gi, si, it, chip) {
-    var idx = (g.items || []).indexOf(it), p = 'sections.' + si + '.groups.' + gi + '.items.' + idx;
+  function cardHtml(g, gi, si, it, chip, editBase) {
+    var idx = (g.items || []).indexOf(it);
+    var p = editBase || ('sections.' + si + '.groups.' + gi + '.items.' + idx);
     return '<button class="vcard" data-type="' + g.kind + '" data-i="' + cards.length +
       '" data-ar="' + (it.ratio || '1:1') + '">' +
       '<span class="hidex" role="button" tabindex="-1" data-hide="' + p + '" title="隐藏">&times;</span>' +
@@ -351,6 +366,135 @@ body.editmode .addrow { display:block; }
       '<span class="vmeta"><span class="vtitle"' + ed(p + '.label') + '>' + it.label + '</span>' +
       (it.sub ? '<span class="vsub">' + it.sub + '</span>' : '') +
       '<span class="vorig">' + it.src + '</span></span></button>';
+  }
+
+  /* ---- 多级标签：按 slug 路径定位节点 ---- */
+  function findIn(arr, slug) {
+    for (var i = 0; i < arr.length; i++) if (arr[i].slug === slug) return arr[i];
+    return null;
+  }
+  function nodeAt(S, path) {
+    var arr = S.groups, node = null;
+    for (var i = 0; i < path.length; i++) {
+      node = findIn(arr, path[i]);
+      if (!node) return null;
+      arr = node.children || [];
+    }
+    return node;
+  }
+  function validPath(S, path) {
+    var arr = S.groups;
+    for (var i = 0; i < path.length; i++) {
+      var node = findIn(arr, path[i]);
+      if (!node) return false;
+      arr = node.children || [];
+    }
+    return true;
+  }
+  function pathIndices(S, path) {
+    var arr = S.groups, idxs = [];
+    for (var i = 0; i < path.length; i++) {
+      var found = -1;
+      for (var j = 0; j < arr.length; j++) if (arr[j].slug === path[i]) { found = j; break; }
+      if (found < 0) return idxs;
+      idxs.push(found);
+      arr = arr[found].children || [];
+    }
+    return idxs;
+  }
+  function countDeep(node) {
+    var n = vis(node).length;
+    (node.children || []).forEach(function (c) { n += countDeep(c); });
+    return n;
+  }
+  function collectDeep(node, idxPath, out) {
+    (node.items || []).forEach(function (it, idx) {
+      out.push({ it: it, node: node, idxPath: idxPath.slice(), idx: idx });
+    });
+    (node.children || []).forEach(function (c, ci) {
+      collectDeep(c, idxPath.concat([ci]), out);
+    });
+  }
+  function editBaseOf(si, idxPath) {
+    var p = 'sections.' + si + '.groups.' + idxPath[0];
+    for (var i = 1; i < idxPath.length; i++) p += '.children.' + idxPath[i];
+    return p + '.items';
+  }
+  function kindOf(node) {
+    if (node.kind) return node.kind;
+    if ((node.children || []).length) return kindOf(node.children[0]);
+    return 'video';
+  }
+
+  /* 生成全部层级标签：第二级(小类) + 依选中路径展开的第三/四级 */
+  function tabsHtml(S) {
+    var h = [];
+    var nAll = S.groups.reduce(function (a, g) { return a + countDeep(g); }, 0);
+    h.push('<div class="tabs2" role="tablist" aria-label="细分方向">');
+    h.push('<button class="tab2' + (!sel.path.length ? ' on' : '') + '" role="tab" aria-selected="' +
+      (!sel.path.length) + '" data-path="">全部概览<span class="t2n">' + nAll + '</span></button>');
+    S.groups.forEach(function (g) {
+      var on = sel.path[0] === g.slug;
+      h.push('<button class="tab2' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
+        '" data-path="' + g.slug + '">' + g.title + '<span class="t2n">' + countDeep(g) + '</span></button>');
+    });
+    h.push('</div>');
+    var arr = S.groups;
+    for (var d = 0; d < sel.path.length; d++) {
+      var node = findIn(arr, sel.path[d]);
+      if (!node) break;
+      var kids = node.children || [];
+      if (!kids.length) break;
+      h.push('<div class="tabs3" role="tablist" aria-label="' + node.title + '细分">');
+      kids.forEach(function (c) {
+        var on = sel.path[d + 1] === c.slug;
+        var p = sel.path.slice(0, d + 1).concat([c.slug]).join('/');
+        h.push('<button class="tab3' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
+          '" data-path="' + p + '">' + c.title + '<span class="t3n">' + countDeep(c) + '</span></button>');
+      });
+      h.push('</div>');
+      arr = kids;
+    }
+    return h.join('');
+  }
+
+  /* 内容区：当前路径节点及其后代的全部素材 */
+  function contentView(si, S) {
+    if (sel.path.length && !validPath(S, sel.path)) { sel.path = []; saveSel(); }
+    var h = [], out = [], title = '全部素材', stat = '';
+    if (!sel.path.length) {
+      S.groups.forEach(function (g, gi) { collectDeep(g, [gi], out); });
+      stat = out.length + ' 项 · ' + S.groups.length + ' 个方向';
+    } else {
+      var node = nodeAt(S, sel.path), idxs = pathIndices(S, sel.path);
+      collectDeep(node, idxs, out);
+      title = node.title;
+      stat = out.length + ' 项' + ((node.children || []).length ? ' · ' + node.children.length + ' 个子类' : '');
+      var label = sel.path.map(function (_, i) { return i + 1; }).join('.');
+      h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no + '.' + label +
+        '</span><h3' + ed('sections.' + si + '.groups.' + idxs[0] + (idxs.length > 1 ? '.children.' + idxs.slice(1).join('.children.') : '') + '.title') +
+        '>' + node.title + '</h3><span class="gstat">' + stat + '</span></div>');
+      if (node.desc) h.push('<p class="gdesc">' + node.desc + '</p>');
+    }
+    if (!sel.path.length) {
+      h.push('<div class="ghead"><span class="gbar"></span><span class="gnum">' + S.no + '.ALL</span>' +
+        '<h3>全部素材</h3><span class="gstat">' + stat + '</span></div>');
+      h.push('<p class="gdesc">点上方标签可逐层筛选。</p>');
+    }
+    if (!out.length) {
+      h.push('<div class="empty">这个分类还没有素材。</div>');
+      return h.join('');
+    }
+    h.push('<div class="grid">');
+    out.forEach(function (rec) {
+      var kind = kindOf(rec.node), chip = rec.node.title;
+      h.push(cardHtml({ kind: kind, items: rec.node.items }, 0, si, rec.it, chip,
+        editBaseOf(si, rec.idxPath)));
+      cards.push({ type: kind, key: rec.it.key, label: rec.it.label,
+        sub: rec.it.sub || '点击查看大图', src: rec.it.src });
+    });
+    h.push('</div>');
+    return h.join('');
   }
 
   /* ---- 视图 A：大类全部素材（默认，一屏看全） ---- */
@@ -403,6 +547,7 @@ body.editmode .addrow { display:block; }
     var m = C.meta, h = [], si = 0;
     for (var i = 0; i < C.sections.length; i++) if (C.sections[i].slug === sel.sec) si = i;
     var S = C.sections[si];
+    if (sel.path.length && !validPath(S, sel.path)) { sel.path = []; saveSel(); }
     var gi = -1;
     for (var j = 0; j < S.groups.length; j++) if (S.groups[j].slug === sel.grp) gi = j;
 
@@ -426,7 +571,7 @@ body.editmode .addrow { display:block; }
     /* 一级 Tab：大类 */
     h.push('<div class="tabs1" role="tablist" aria-label="作品大类">');
     C.sections.forEach(function (X) {
-      var tot = X.groups.reduce(function (a, g) { return a + vis(g).length; }, 0);
+      var tot = X.groups.reduce(function (a, g) { return a + countDeep(g); }, 0);
       var on = X.slug === S.slug;
       h.push('<button class="tab1' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
         '" data-sec="' + X.slug + '" style="--accent:var(--c' + (['a','b','c','d'].indexOf(X.tone) + 1) + ')">' +
@@ -443,19 +588,10 @@ body.editmode .addrow { display:block; }
       '<div class="secrule"></div>' +
       '<p class="secdesc"' + ed('sections.' + si + '.desc') + '>' + S.desc + '</p></div>');
 
-    /* 二级 Tab：小类 */
-    var nAll = S.groups.reduce(function (a, g) { return a + vis(g).length; }, 0);
-    h.push('<div class="tabs2" role="tablist" aria-label="细分小类">');
-    h.push('<button class="tab2' + (gi < 0 ? ' on' : '') + '" role="tab" aria-selected="' + (gi < 0) +
-      '" data-grp="ALL">全部概览<span class="t2n">' + nAll + '</span></button>');
-    S.groups.forEach(function (g, k) {
-      var on = k === gi;
-      h.push('<button class="tab2' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on +
-        '" data-grp="' + g.slug + '">' + g.title + '<span class="t2n">' + vis(g).length + '</span></button>');
-    });
-    h.push('</div>');
+    /* 二级及以下：多级标签 */
+    h.push(tabsHtml(S));
 
-    h.push(gi < 0 ? allView(si, S) : gridView(si, S, gi));
+    h.push(contentView(si, S));
 
     h.push('<div class="addrow"><button class="gbtn" data-add="' + si + '">+ 新增小类</button></div>');
     h.push('</section>');
@@ -593,7 +729,14 @@ body.editmode .addrow { display:block; }
 
   function bind() {
     Array.prototype.forEach.call(document.querySelectorAll('[data-sec]'), function (b) {
-      b.onclick = function () { sel.sec = b.dataset.sec; sel.grp = 'ALL'; saveSel(); render(); scrollTop(); };
+      b.onclick = function () { sel.sec = b.dataset.sec; sel.grp = 'ALL'; sel.path = []; saveSel(); render(); scrollTop(); };
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-path]'), function (b) {
+      b.onclick = function () {
+        sel.path = b.dataset.path ? b.dataset.path.split('/') : [];
+        sel.grp = sel.path.length ? sel.path[0] : 'ALL';
+        saveSel(); render(); scrollTop();
+      };
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-grp]'), function (b) {
       b.onclick = function () { sel.grp = b.dataset.grp; saveSel(); render(); scrollTop(); };
